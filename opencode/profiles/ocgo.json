@@ -1,0 +1,84 @@
+{
+  "models": {
+    "sdd-apply": "openai/gpt-5.3-codex",
+    "sdd-archive": "openai/gpt-5.4-mini",
+    "sdd-design": "openai/gpt-5.4",
+    "sdd-explore": "openai/gpt-5.4",
+    "sdd-init": "openai/gpt-5.4-mini",
+    "sdd-onboard": "openai/gpt-5.4",
+    "sdd-propose": "openai/gpt-5.4",
+    "sdd-spec": "openai/gpt-5.4",
+    "sdd-tasks": "openai/gpt-5.4",
+    "sdd-verify": "openai/gpt-5.3-codex",
+    "sdd-apply-free": "opencode/minimax-m2.5-free",
+    "sdd-archive-free": "opencode/minimax-m2.5-free",
+    "sdd-design-free": "opencode/minimax-m2.5-free",
+    "sdd-explore-free": "opencode/minimax-m2.5-free",
+    "sdd-init-free": "opencode/minimax-m2.5-free",
+    "sdd-onboard-free": "opencode/minimax-m2.5-free",
+    "sdd-orchestrator-free": "opencode/minimax-m2.5-free",
+    "sdd-propose-free": "opencode/minimax-m2.5-free",
+    "sdd-spec-free": "opencode/minimax-m2.5-free",
+    "sdd-tasks-free": "opencode/minimax-m2.5-free",
+    "sdd-verify-free": "openai/gpt-5.4",
+    "gentle-orchestrator": "openai/gpt-5.4"
+  },
+  "fallback": {
+    "sdd-apply": "opencode/minimax-m2.5-free",
+    "sdd-apply-free": "opencode/big-pickle",
+    "sdd-archive": "opencode/minimax-m2.5-free",
+    "sdd-archive-free": "opencode/big-pickle",
+    "sdd-design": "opencode/minimax-m2.5-free",
+    "sdd-design-free": "opencode/big-pickle",
+    "sdd-explore": "opencode/minimax-m2.5-free",
+    "sdd-explore-free": "opencode/big-pickle",
+    "sdd-init": "opencode/minimax-m2.5-free",
+    "sdd-init-free": "opencode/big-pickle",
+    "sdd-onboard": "opencode/minimax-m2.5-free",
+    "sdd-onboard-free": "opencode/big-pickle",
+    "sdd-orchestrator-free": "opencode/big-pickle",
+    "sdd-propose": "opencode/minimax-m2.5-free",
+    "sdd-propose-free": "opencode/big-pickle",
+    "sdd-spec": "opencode/minimax-m2.5-free",
+    "sdd-spec-free": "opencode/big-pickle",
+    "sdd-tasks": "opencode/minimax-m2.5-free",
+    "sdd-tasks-free": "opencode/big-pickle",
+    "sdd-verify": "opencode/minimax-m2.5-free",
+    "sdd-verify-free": "opencode/big-pickle"
+  },
+  "configs": {
+    "sdd-apply": {
+      "reasoningEffort": "high"
+    },
+    "sdd-archive": {
+      "reasoningEffort": "medium"
+    },
+    "sdd-design": {
+      "reasoningEffort": "high"
+    },
+    "sdd-explore": {
+      "reasoningEffort": "medium"
+    },
+    "sdd-init": {
+      "reasoningEffort": "medium"
+    },
+    "sdd-onboard": {
+      "reasoningEffort": "medium"
+    },
+    "sdd-propose": {
+      "reasoningEffort": "high"
+    },
+    "sdd-spec": {
+      "reasoningEffort": "high"
+    },
+    "sdd-verify": {
+      "reasoningEffort": "medium"
+    },
+    "sdd-tasks": {
+      "reasoningEffort": "high"
+    },
+    "gentle-orchestrator": {
+      "reasoningEffort": "medium"
+    }
+  }
+}

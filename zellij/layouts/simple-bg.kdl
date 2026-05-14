@@ -1,0 +1,35 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="file:/home/david/.config/zellij/plugins/zjstatus.wasm" {
+                format_left "{mode} #[fg=#C0CAF5,bold] {session} {tabs}"
+                format_right "{command_cpu} {command_ram} {command_battery} {datetime}"
+                format_space ""
+                mode_normal "#[bg=#B4DE8D,fg=#1A1B26,bold]   "
+                mode_tmux "#[bg=#C0CAF5,fg=#1A1B26,bold]   "
+                tab_normal "#[bg=#5A5F8C,fg=#B4DE8D,italic] {name} "
+                tab_active "#[bg=#B4DE8D,fg=#566C9C,bold] {name} "
+                command_cpu_command "/home/david/.config/zellij/scripts/cpu.sh"
+                command_cpu_format "#[fg=#7DCFFF] 󰍛 {stdout}% "
+                command_cpu_interval "5"
+                command_cpu_rendermode "static"
+                command_ram_command "/home/david/.config/zellij/scripts/ram.sh"
+                command_ram_format "#[fg=#73DACA]  {stdout} "
+                command_ram_interval "5"
+                command_ram_rendermode "static"
+                command_battery_command "/home/david/.config/zellij/scripts/battery.sh"
+                command_battery_format "#[fg=#9ECE6A] 󰁹 {stdout}% "
+                command_battery_interval "60"
+                command_battery_rendermode "static"
+                datetime "#[fg=#7AA2F7,bold] {format} "
+                datetime_format "%A %d %B %Y %H:%M"
+                datetime_timezone "Europe/Madrid"
+            }
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+}
+

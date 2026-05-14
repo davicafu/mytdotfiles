@@ -1,0 +1,56 @@
+layout {
+    default_tab_template {
+        //pane size=1 borderless=true {
+        //    plugin location="zellij:compact-bar"
+        //}
+        pane size=1 borderless=true {
+            plugin location="file:/home/david/.config/zellij/plugins/zjstatus.wasm" {
+                format_left "{mode} #[bg=#7a88cf,fg=#1f2335,bold] {session} {tabs}"
+                format_right "{command_cpu} {command_ram} {command_battery} {datetime}"
+                format_space ""
+                mode_normal "#[bg=#85B5BA,fg=#2d353b,bold]   "
+                mode_tmux "#[bg=#EA83A5,fg=#2d353b,bold]   "
+                tab_normal "#[bg=#3b4252,fg=#c9c7cd,italic]  {name}  "
+                tab_active "#[bg=#e29eca,fg=#2d353b,bold]  {name}  "
+                command_cpu_command "/home/david/.config/zellij/scripts/cpu.sh"
+                command_cpu_format "#[fg=#dbbc7f] 󰍛 {stdout}% "
+                command_cpu_interval "5"
+                command_cpu_rendermode "static"
+                command_ram_command "/home/david/.config/zellij/scripts/ram.sh"
+                command_ram_format "#[fg=#7fbbb3]  {stdout} "
+                command_ram_interval "5"
+                command_ram_rendermode "static"
+                command_battery_command "/home/david/.config/zellij/scripts/battery.sh"
+                command_battery_format "#[fg=#a7c080] 󰁹 {stdout}% "
+                command_battery_interval "60"
+                command_battery_rendermode "static"
+                datetime "#[fg=#ea83a5,bold] {format} "
+                datetime_format "%A %d %B %Y %H:%M"
+                datetime_timezone "Europe/Madrid"
+            }
+        }
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    tab name="shell" {
+        pane
+    }
+    tab name="workspace" {
+        pane split_direction="vertical" {
+            pane
+            pane split_direction="horizontal" {
+                pane
+                pane
+            }
+        }
+    }
+    tab name="nvim" {
+        pane command="nvim"
+    }
+    tab name="system" {
+        pane command="btop"
+    }
+}
+
