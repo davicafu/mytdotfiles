@@ -145,6 +145,14 @@ if grep -qi microsoft /proc/version; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [[ "$OSTYPE" == linux* ]]; then
+  bindkey "^[[H" beginning-of-line
+  bindkey "^[[F" end-of-line
+  bindkey "^[OH" beginning-of-line
+  bindkey "^[OF" end-of-line
+  bindkey "^[[3~" delete-char
+fi
+
 # zsh plugins
 source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

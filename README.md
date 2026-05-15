@@ -1,6 +1,9 @@
 # Initial Setup Instructions
 
 ## Homebrew
+Configuración actual:
+- gestor base para instalar y actualizar todo el tooling del setup
+
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew update
@@ -8,10 +11,9 @@ brew upgrade
 ```
 
 ## Nerd font
-```bash
-brew tap homebrew/cask-fonts
-brew install --cask font-inconsolata-nerd-font
-```
+Configuración actual:
+- el setup espera `Inconsolata Nerd Font` como fuente del terminal
+- habilita iconos y glyphs para `powerlevel10k`, `eza`, `lualine` y plugins de Zellij, entre otros
 
 ### Mac
 ```bash
@@ -36,6 +38,15 @@ unzip -o /tmp/Inconsolata.zip -d ~/Library/Fonts
 ### Remember to set terminal font to: Inconsolata Nerd Font
 
 ## Shell
+Configuración actual:
+- zsh con prompt `powerlevel10k` lean de 2 lineas con iconos nerd font
+- `atuin` para historial y `zoxide` para navegación rápida
+- `zsh-autosuggestions y `zsh-syntax-highlighting`
+- aliases: `ls`/`ll`/`la`/`lt` con `eza`, `cat` con `bat`, `find` con `fd`, `grep` con `rg`
+- helpers con `fzf`: `cdf`, `ff`, `fg`, `fkill`, `glc`
+- arranque automatico de `zellij` con layout aleatorio (theme everfores, sakura y kanagawa). Se puede modificar en: `~/.config/.zshrc`
+- soporte WSL para `win32yank` via `~/.local/bin`
+
 ```bash
 brew install zsh
 
@@ -59,24 +70,30 @@ brew install \
 $(brew --prefix)/opt/fzf/install
 atuin import auto
 
-#### IMPORTANTE:
-#### zsh-syntax-highlighting debe cargarse el último en .zshrc
-
 mkdir -p ~/.config/zsh ~/.config/zellij ~/.config/atuin
 
-cp -r mydotfiles/.config/zsh ~/.config/
+cp -r mydotfiles/zsh ~/.config/
 
 echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv
 
 #### enable zsh by default
 chsh -s "$(which zsh)"
+
 ```
+#### IMPORTANTE
+Si modificas `~/.config/.zshrc` asegúrate que zsh-syntax-highlighting debe cargarse el último para evitar bugs.
 
 ## Zellij
+Configuración actual:
+- tema base `kanagawa` con `simplified_ui` activo y sin `pane_frames` por defecto
+- layouts custom con barra superior `zjstatus` y barra inferior nativa
+- pestañas listas para `shell`, `workspace`, `nvim` y `system` (abre `btop`)
+- plugin `zellij_forgot` disponible con atajos de búsqueda
+
 ```bash
 brew install zellij
 
-cp -r mydotfiles/.config/zellij ~/.config/
+cp -r mydotfiles/zellij ~/.config/
 ```
 
 ### Solo en caso de tener problemas con los plugins
@@ -94,6 +111,22 @@ zellij plugin -- file:/home/david/.config/zellij/plugins/zjstatus.wasm
 ```
 
 ## Nvim
+Configuración actual:
+- Base `LazyVim`.
+- Tema aleatorio entre `kanagawa`, `tokyonight-night` y `everforest`, configurable en `~/.config/nvim/init.lua`. En `lua/plugins/colors.lua` para instalar nuevos themes.
+- Clipboard del sistema activo con `unnamedplus`.
+- Soporte WSL para clipboard usando `win32yank`.
+- LSPs instalados/configurados para Python y Go: `pyright`, `ruff`, `gopls`.
+- Formatters activos: `ruff_format`, `gofmt`, `prettier`, `kdlfmt`.
+- Autocompletado con `blink.cmp`.
+- UI/status: `lualine`, `incline`, `noice`, `smear`, `snacks`, `zen`.
+- Navegación/archivos: `oil`.
+- Diagnóstico y problemas: `trouble`, `nvim-lint`.
+- Ayuda de atajos: `which-key`.
+- Comentarios TODO: `todo-comments`.
+- Markdown: configuración/plugin específico en `markdown.lua`.
+- Syntax/parsing: `treesitter`.
+- Disabled plugins: `copilot`, `copilot-chat`.
 
 ### LazyVim
 ```bash
@@ -120,7 +153,7 @@ chmod +x ~/.local/bin/win32yank.exe
 
 ### Copy nvim config
 ```bash
-cp -r mydotfiles/.config/nvim ~/.config/
+cp -r mydotfiles/nvim ~/.config/
 ```
 #### review this file for clipboard configuration 
 > ~/.config/nvim/lua/config/options.lua
@@ -128,6 +161,10 @@ cp -r mydotfiles/.config/nvim ~/.config/
 > ~/.config/nvim/init.lua
 
 ## Opcionales
+Configuración actual:
+- herramientas extra que no forman parte del setup base
+- `toilet` para banners, `asciicinema` para grabar terminal, `pandoc` para conversion de docs y `chafa` para ver imagenes en terminal
+
 ```bash
 brew toilet # banner generator
 brew asciicinema # record terminal

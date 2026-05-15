@@ -5,7 +5,7 @@ require("config.lazy")
 -- Esto asegura que sea un número distinto cada vez que abras Neovim
 math.randomseed(os.time())
 
--- Pon aquí los nombres EXACTOS de tus dos temas
+-- Pon aquí los nombres EXACTOS de tus temas
 local my_themes = { "kanagawa", "tokyonight-night", "everforest" }
 
 -- Elegimos un número aleatorio entre 1 y 2
