@@ -136,7 +136,7 @@ Configuración actual:
 - Clipboard del sistema activo con `unnamedplus`.
 - Soporte WSL para clipboard usando `win32yank`.
 - LSPs instalados/configurados para Python y Go: `pyright`, `ruff`, `gopls`.
-- Formatters activos: `ruff_format`, `gofmt`, `prettier`, `kdlfmt`.
+- Formatters activos: `ruff_format`, `gofmt`, `prettier`, `kdlfmt`, `shfmt`.
 - Autocompletado con `blink.cmp`.
 - UI/status: `lualine`, `incline`, `noice`, `smear`, `snacks`, `zen`.
 - Navegación/archivos: `oil`.
@@ -156,11 +156,12 @@ rm -rf ~/.config/nvim/.git
 nvim
 # wait for plugins to install, then quit and reopen nvim
 
-#### for formatter kdl
+#### for formatter kdl and shfmt
 brew install rust
 cargo install kdlfmt
 echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
 brew install prettier
+brew install shfmt
 ```
 
 ### Only WSL: clipboard hack

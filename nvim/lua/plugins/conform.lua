@@ -30,6 +30,21 @@ return {
       typescriptreact = { "prettier" },
 
       kdl = { "kdlfmt" },
+
+      sh = { "shfmt" },
+      bash = { "shfmt" },
+      zsh = { "shfmt" },
+    },
+
+    formatters = {
+      shfmt = {
+        prepend_args = {
+          "-i",
+          "2",
+          "-ci",
+          "-sr",
+        },
+      },
     },
   },
 }
