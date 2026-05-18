@@ -1,7 +1,9 @@
 # Initial Setup Instructions
 
 ## Homebrew
+
 Configuración actual:
+
 - gestor base para instalar y actualizar todo el tooling del setup
 
 ```bash
@@ -11,11 +13,14 @@ brew upgrade
 ```
 
 ## Nerd font
+
 Configuración actual:
+
 - el setup espera `Inconsolata Nerd Font` como fuente del terminal
 - habilita iconos y glyphs para `powerlevel10k`, `eza`, `lualine` y plugins de Zellij, entre otros
 
 ### Mac
+
 ```bash
 mkdir -p ~/Library/Fonts
 
@@ -25,20 +30,24 @@ unzip -o /tmp/Inconsolata.zip -d ~/Library/Fonts
 ```
 
 ### Linux
+
 ```bash
  mkdir -p ~/.local/share/fonts
  curl -L \
    -o /tmp/Inconsolata.zip \
    https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Inconsolata.zip
- 
+
  unzip -o /tmp/Inconsolata.zip -d ~/.local/share/fonts
- 
+
  fc-cache -fv
 ```
+
 ### Remember to set terminal font to: Inconsolata Nerd Font
 
 ## Shell
+
 Configuración actual:
+
 - zsh con prompt `powerlevel10k` lean de 2 lineas con iconos nerd font
 - `atuin` para historial y `zoxide` para navegación rápida
 - `zsh-autosuggestions y `zsh-syntax-highlighting`
@@ -80,11 +89,15 @@ echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv
 chsh -s "$(which zsh)"
 
 ```
+
 #### IMPORTANTE
+
 Si modificas `~/.config/.zshrc` asegúrate que zsh-syntax-highlighting debe cargarse el último para evitar bugs.
 
 ## Zellij
+
 Configuración actual:
+
 - tema base `kanagawa` con `simplified_ui` activo y sin `pane_frames` por defecto
 - layouts custom con barra superior `zjstatus` y barra inferior nativa
 - pestañas listas para `shell`, `workspace`, `nvim` y `system` (abre `btop`)
@@ -94,14 +107,18 @@ Configuración actual:
 brew install zellij
 
 cp -r mydotfiles/zellij ~/.config/
+
+## Los plugins de zellij no funcionan con rutas relativas
+sed -i "s/\/home\/david/\/home\/${USERNAME}/g" ./zellij/layouts/*
 ```
 
 ### Solo en caso de tener problemas con los plugins
+
 ```bash
 # descarga de nuevo si crees que están corruptos
 mkdir -p ~/zellij/plugins
-curl -L -o ~/zellij/plugins/zellij_forgot.wasm https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm 
-curl -L -o ~/.config/zellij/plugins/zjstatus.wasm https://github.com/dj95/zjstatus/releases/download/v0.23.0/zjstatus.wasm 
+curl -L -o ~/zellij/plugins/zellij_forgot.wasm https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm
+curl -L -o ~/.config/zellij/plugins/zjstatus.wasm https://github.com/dj95/zjstatus/releases/download/v0.23.0/zjstatus.wasm
 curl -L -o ~/.config/zellij/plugins/zjframes.wasm https://github.com/dj95/zjstatus/releases/download/v0.23.0/zjframes.wasm
 
 # borra cache y pide permisos otra vez explicitos
@@ -111,7 +128,9 @@ zellij plugin -- file:/home/david/.config/zellij/plugins/zjstatus.wasm
 ```
 
 ## Nvim
+
 Configuración actual:
+
 - Base `LazyVim`.
 - Tema aleatorio entre `kanagawa`, `tokyonight-night` y `everforest`, configurable en `~/.config/nvim/init.lua`. En `lua/plugins/colors.lua` para instalar nuevos themes.
 - Clipboard del sistema activo con `unnamedplus`.
@@ -129,6 +148,7 @@ Configuración actual:
 - Disabled plugins: `copilot`, `copilot-chat`.
 
 ### LazyVim
+
 ```bash
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
@@ -142,7 +162,9 @@ cargo install kdlfmt
 echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
 brew install prettier
 ```
+
 ### Only WSL: clipboard hack
+
 ```bash
 mkdir -p ~/.local/bin
 curl -Lo /tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/latest/download/win32yank-x64.zip
@@ -152,16 +174,23 @@ chmod +x ~/.local/bin/win32yank.exe
 ```
 
 ### Copy nvim config
+
 ```bash
 cp -r mydotfiles/nvim ~/.config/
 ```
-#### review this file for clipboard configuration 
+
+#### review this file for clipboard configuration
+
 > ~/.config/nvim/lua/config/options.lua
-#### review this file for disable random theme 
+
+#### review this file for disable random theme
+
 > ~/.config/nvim/init.lua
 
 ## Opcionales
+
 Configuración actual:
+
 - herramientas extra que no forman parte del setup base
 - `toilet` para banners, `asciicinema` para grabar terminal, `pandoc` para conversion de docs y `chafa` para ver imagenes en terminal
 
