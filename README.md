@@ -79,9 +79,11 @@ brew install \
 $(brew --prefix)/opt/fzf/install
 atuin import auto
 
-mkdir -p ~/.config/zsh ~/.config/zellij ~/.config/atuin
+mkdir -p ~/.config
 
-cp -r mydotfiles/zsh ~/.config/
+ln -s ~/mydotfiles/zsh/.zshrc ~/.zshrc
+#ln -s ~/mydotfiles/atuin ~/.config/atuin
+
 
 echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv
 
@@ -106,7 +108,8 @@ Configuración actual:
 ```bash
 brew install zellij
 
-cp -r mydotfiles/zellij ~/.config/
+ln -s ~/mydotfiles/zellij ~/.config/zellij
+```
 
 ## Los plugins de zellij no funcionan con rutas relativas
 sed -i "s/\/home\/david/\/home\/${USERNAME}/g" ./zellij/layouts/*
@@ -177,7 +180,8 @@ chmod +x ~/.local/bin/win32yank.exe
 ### Copy nvim config
 
 ```bash
-cp -r mydotfiles/nvim ~/.config/
+ln -s ~/mydotfiles/nvim ~/.config/nvim
+
 ```
 
 #### review this file for clipboard configuration

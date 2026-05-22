@@ -46,11 +46,11 @@ layout {
             }
         }
     }
-    tab name="nvim" {
-        pane command="nvim"
-    }
-    tab name="system" {
-        pane command="btop"
-    }
+ //tab name="nvim" {
+    //    pane command="nvim"
+    //}
+    //tab name="system" {
+    //    pane command="btop"
+    //}
 }
 

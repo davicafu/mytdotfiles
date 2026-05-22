@@ -35,8 +35,8 @@ cdf() {
   local dir
 
   dir=$(
-    fd --type d --hidden --exclude .git \
-    | fzf \
+    fd --type d --hidden --exclude .git |
+      fzf \
         --height 90% \
         --layout reverse \
         --border \
@@ -51,12 +51,12 @@ fkill() {
   local pid
 
   pid=$(
-    ps aux \
-    | fzf \
+    ps aux |
+      fzf \
         --height 80% \
         --layout reverse \
-        --border \
-    | awk '{print $2}'
+        --border |
+      awk '{print $2}'
   ) || return
 
   [[ -n "$pid" ]] && kill -9 "$pid"
@@ -67,8 +67,8 @@ ff() {
   local file
 
   file=$(
-    fd --type f --hidden --exclude .git \
-    | fzf \
+    fd --type f --hidden --exclude .git |
+      fzf \
         --height 90% \
         --layout reverse \
         --border \
@@ -89,8 +89,8 @@ fg() {
   local line
 
   selected=$(
-    rg --line-number --column --smart-case "$1" \
-    | fzf \
+    rg --line-number --column --smart-case "$1" |
+      fzf \
         --delimiter : \
         --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'
   ) || return
@@ -103,7 +103,7 @@ fg() {
 
 # last git commit diff
 glc() {
-  git rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+  git rev-parse --is-inside-work-tree > /dev/null 2>&1 || {
     echo "Not inside a git repository"
     return 1
   }
@@ -114,31 +114,39 @@ glc() {
   commit="$(git rev-parse HEAD)"
 
   file=$(
-    git show --name-only --pretty=format: "$commit" \
-      | sed '/^$/d' \
-      | fzf \
-          --height 90% \
-          --layout reverse \
-          --border \
-          --header "Last commit: $(git log -1 --pretty=format:'%h %s')" \
-          --preview "git show --color=always --stat --patch -- {}"
+    git show --name-only --pretty=format: "$commit" |
+      sed '/^$/d' |
+      fzf \
+        --height 90% \
+        --layout reverse \
+        --border \
+        --header "Last commit: $(git log -1 --pretty=format:'%h %s')" \
+        --preview "git show --color=always --stat --patch -- {}"
   ) || return
 
   nvim "$file"
 }
 
 # enable zellij with random theme
-if [[ -o interactive ]] \
-  && [[ -z "$ZELLIJ" ]] \
-  && [[ "$TERM_PROGRAM" != "vscode" ]]; then
+zj() {
+  local layouts=(everforest kanagawa kanagawa-bg sakura sakura-bg)
+  local selected=${layouts[$((RANDOM % ${#layouts[@]} + 1))]}
 
-    local layouts=("everforest" "kanagawa" "kanagawa-bg" "sakura" "sakura-bg")
-    local selected_layout=${layouts[$RANDOM % ${#layouts[@]} + 1]}
-    echo "📦 Iniciando Zellij con el layout: $selected_layout"
+  #zellij attach main || zellij --layout "$selected" --session main
+  zellij --layout "$selected"
+}
 
-    zellij --layout "$selected_layout"
-
-fi
+#if [[ -o interactive ]] &&
+#  [[ -z "$ZELLIJ" ]] &&
+#  [[ "$TERM_PROGRAM" != "vscode" ]]; then
+#
+#  local layouts=("everforest" "kanagawa" "kanagawa-bg" "sakura" "sakura-bg")
+#  local selected_layout=${layouts[$RANDOM % ${#layouts[@]} + 1]}
+#  echo "📦 Iniciando Zellij con el layout: $selected_layout"
+#
+#  exec zellij --layout "$selected_layout"
+#
+#fi
 
 # WSL tools: clipboard nvim
 if grep -qi microsoft /proc/version; then
@@ -156,5 +164,3 @@ fi
 # zsh plugins
 source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
-
