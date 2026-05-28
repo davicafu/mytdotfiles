@@ -50,7 +50,7 @@ Configuración actual:
 
 - zsh con prompt `powerlevel10k` lean de 2 lineas con iconos nerd font
 - `atuin` para historial y `zoxide` para navegación rápida
-- `zsh-autosuggestions y `zsh-syntax-highlighting`
+- `zsh-autosuggestions` y `zsh-syntax-highlighting`
 - aliases: `ls`/`ll`/`la`/`lt` con `eza`, `cat` con `bat`, `find` con `fd`, `grep` con `rg`
 - helpers con `fzf`: `cdf`, `ff`, `fg`, `fkill`, `glc`
 - arranque automatico de `zellij` con layout aleatorio (theme everfores, sakura y kanagawa). Se puede modificar en: `~/.config/.zshrc`
@@ -81,9 +81,7 @@ atuin import auto
 
 mkdir -p ~/.config
 
-ln -s ~/mydotfiles/zsh/.zshrc ~/.zshrc
-#ln -s ~/mydotfiles/atuin ~/.config/atuin
-
+ln -s ~/mydotfiles/zsh ~/.config/zsh
 
 echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv
 
@@ -111,13 +109,7 @@ Configuración actual:
 mv ~/.tmux.conf ~/.tmux.conf.bak
 mv ~/.config/tmux ~/.config/tmux.bak
 
-mkdir -p ~/.config/tmux
-
-ln -s ~/mydotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
-ln -s ~/mydotfiles/tmux/themes ~/.config/tmux/themes
-ln -s ~/mydotfiles/tmux/scripts ~/.config/tmux/scripts
-ln -s ~/mydotfiles/tmux/layout-dev.sh ~/.config/tmux/layout-dev.sh
-
+ln -s ~/mydotfiles/tmux ~/.config/tmux
 ln -s ~/.config/tmux/tmux.conf ~/.tmux.conf
 
 chmod +x ~/mydotfiles/tmux/scripts/*.sh
@@ -131,6 +123,7 @@ git clone https://github.com/tmux-plugins/tmux-yank ~/.tmux/plugins/tmux-yank
 git clone https://github.com/christoomey/vim-tmux-navigator ~/.tmux/plugins/vim-tmux-navigator
 git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
 git clone https://github.com/alexwforsythe/tmux-which-key ~/.tmux/plugins/tmux-which-key
+git clone --recurse-submodules https://github.com/alexwforsythe/tmux-which-key ~/.tmux/plugins/tmux-which-key
 
 tmux kill-server
 ```
