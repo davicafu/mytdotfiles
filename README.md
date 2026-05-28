@@ -96,13 +96,52 @@ chsh -s "$(which zsh)"
 
 Si modificas `~/.config/.zshrc` asegúrate que zsh-syntax-highlighting debe cargarse el último para evitar bugs.
 
-## Zellij
+## Multiplexor
+
+### Tmux (Recomendado)
+
+Configuración actual:
+
+- barra superior de estado personalizada
+- se inicia con theme random-theme, configurable en mydotfiles/tmux/theme/random-theme.sh
+- alias creado con tdev, con dos pestañas shell y workspace, esta última dividida en panes
+- plugins instalados indicados más abajo
+
+```bash
+mv ~/.tmux.conf ~/.tmux.conf.bak
+mv ~/.config/tmux ~/.config/tmux.bak
+
+mkdir -p ~/.config/tmux
+
+ln -s ~/mydotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+ln -s ~/mydotfiles/tmux/themes ~/.config/tmux/themes
+ln -s ~/mydotfiles/tmux/scripts ~/.config/tmux/scripts
+ln -s ~/mydotfiles/tmux/layout-dev.sh ~/.config/tmux/layout-dev.sh
+
+ln -s ~/.config/tmux/tmux.conf ~/.tmux.conf
+
+chmod +x ~/mydotfiles/tmux/scripts/*.sh
+chmod +x ~/mydotfiles/tmux/layout-dev.sh
+chmod +x ~/mydotfiles/tmux/themes/random-theme.sh
+
+# plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tmux-sensible ~/.tmux/plugins/tmux-sensible
+git clone https://github.com/tmux-plugins/tmux-yank ~/.tmux/plugins/tmux-yank
+git clone https://github.com/christoomey/vim-tmux-navigator ~/.tmux/plugins/vim-tmux-navigator
+git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
+git clone https://github.com/alexwforsythe/tmux-which-key ~/.tmux/plugins/tmux-which-key
+
+tmux kill-server
+```
+
+### Zellij (Opcional)
 
 Configuración actual:
 
 - tema base `kanagawa` con `simplified_ui` activo y sin `pane_frames` por defecto
 - layouts custom con barra superior `zjstatus` y barra inferior nativa
-- pestañas listas para `shell`, `workspace`, `nvim` y `system` (abre `btop`)
+- pestañas listas para `shell`, `workspace`
 - plugin `zellij_forgot` disponible con atajos de búsqueda
 
 ```bash
@@ -111,9 +150,11 @@ brew install zellij
 ln -s ~/mydotfiles/zellij ~/.config/zellij
 ```
 
-## Los plugins de zellij no funcionan con rutas relativas
-sed -i "s/\/home\/david/\/home\/${USERNAME}/g" ./zellij/layouts/*
-```
+#### Los plugins de zellij no funcionan con rutas relativas
+
+sed -i "s/\/home\/david/\/home\/${USERNAME}/g" ./zellij/layouts/\*
+
+````
 
 ### Solo en caso de tener problemas con los plugins
 
@@ -128,7 +169,7 @@ curl -L -o ~/.config/zellij/plugins/zjframes.wasm https://github.com/dj95/zjstat
 rm -rf ~/.cache/zellij
 zellij
 zellij plugin -- file:/home/david/.config/zellij/plugins/zjstatus.wasm
-```
+````
 
 ## Nvim
 

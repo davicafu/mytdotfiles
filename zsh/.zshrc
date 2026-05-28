@@ -30,6 +30,8 @@ alias cat="bat --style=plain"
 alias find="fd"
 alias grep="rg"
 
+alias tdev="$HOME/.config/tmux/layout-dev.sh"
+
 # search dir + cd in
 cdf() {
   local dir
