@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = {}
 
 -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
--- %%%                                  FONT                                      %%%
+-- %%%                                    FONT                                      %%%
 -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 config.font = wezterm.font("Inconsolata Nerd Font")
@@ -48,8 +48,8 @@ if wezterm.target_triple:find("windows") then
 else
 	config.term = "wezterm"
 end
-
 config.enable_csi_u_key_encoding = true
+
 -- Undercurl support (LSP diagnostics, spelling)
 config.underline_thickness = 2
 config.underline_position = -2
@@ -74,7 +74,6 @@ config.send_composed_key_when_right_alt_is_pressed = false
 
 -- config.color_scheme = "Tokyo Night",
 config.colors = {
-
 	-- Base Colors
 	foreground = "#f3f6f9",
 	background = "#06080f",
@@ -91,25 +90,25 @@ config.colors = {
 	-- Normal Colors
 	ansi = {
 		"#06080f", -- black
-		"#cb7c94", -- red
-		"#b7cc85", -- green
+		"#ff6b6b", -- red
+		"#7fd65a", -- green
 		"#ffe066", -- yellow
-		"#7fb4ca", -- blue
+		"#61afef", -- blue
 		"#ff8dd7", -- magenta
-		"#7aa89f", -- cyan
+		"#5fd7d7", -- cyan
 		"#f3f6f9", -- white
 	},
 
 	-- Bright Colors
 	brights = {
 		"#8a8fa3", -- black
-		"#de8fa8", -- red
-		"#d1e8a9", -- green
-		"#fff7b1", -- yellow
-		"#a3d4d5", -- blue
+		"#ff9a9a", -- red
+		"#a5e87b", -- green
+		"#fff0a0", -- yellow
+		"#8cc8ff", -- blue
 		"#ffaeea", -- magenta
-		"#7fb4ca", -- cyan
-		"#f3f6f9", -- white
+		"#8ee8e8", -- cyan
+		"#e5e7eb", -- white
 	},
 }
 

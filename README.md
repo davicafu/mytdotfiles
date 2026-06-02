@@ -44,6 +44,20 @@ unzip -o /tmp/Inconsolata.zip -d ~/Library/Fonts
 
 ### Remember to set terminal font to: Inconsolata Nerd Font
 
+## Terminal
+
+### Ghostty (MacOs)
+
+```bash
+ln -s ~/mydotfiles/ghostty/ ~/.config
+```
+
+### Wezterm (WSL)
+
+```bash
+ln -s ~/mydotfiles/.wezterm.lua /mnt/c/Users/<USERNAME>/
+```
+
 ## Shell
 
 Configuración actual:

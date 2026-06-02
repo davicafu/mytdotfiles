@@ -64,7 +64,7 @@ fkill() {
   [[ -n "$pid" ]] && kill -9 "$pid"
 }
 
-# quick search + preview + open
+# quick file search + preview + open
 ff() {
   local file
 
@@ -84,7 +84,7 @@ zle -N ff-widget ff
 
 bindkey '^F' ff-widget
 
-# global search + preview
+# global text search + preview + open
 fg() {
   local selected
   local file
@@ -129,26 +129,40 @@ glc() {
   nvim "$file"
 }
 
+gls() {
+  local file
+
+  file=$(
+    (
+      git diff --name-only
+      git diff --cached --name-only
+      git ls-files --others --exclude-standard
+    ) | sort -u |
+      fzf \
+        --height=90% \
+        --layout=reverse \
+        --border \
+        --header="Working tree changes" \
+        --preview '
+          if git ls-files --error-unmatch {} >/dev/null 2>&1; then
+            git diff --color=always -- {}
+            git diff --cached --color=always -- {}
+          else
+            bat --color=always --style=numbers {}
+          fi
+        '
+  ) || return
+
+  nvim "$file"
+}
+
 # enable zellij with random theme
 zj() {
   local layouts=(everforest kanagawa kanagawa-bg sakura sakura-bg)
   local selected=${layouts[$((RANDOM % ${#layouts[@]} + 1))]}
 
-  #zellij attach main || zellij --layout "$selected" --session main
   zellij --layout "$selected"
 }
-
-#if [[ -o interactive ]] &&
-#  [[ -z "$ZELLIJ" ]] &&
-#  [[ "$TERM_PROGRAM" != "vscode" ]]; then
-#
-#  local layouts=("everforest" "kanagawa" "kanagawa-bg" "sakura" "sakura-bg")
-#  local selected_layout=${layouts[$RANDOM % ${#layouts[@]} + 1]}
-#  echo "📦 Iniciando Zellij con el layout: $selected_layout"
-#
-#  exec zellij --layout "$selected_layout"
-#
-#fi
 
 # WSL tools: clipboard nvim
 if grep -qi microsoft /proc/version; then
