@@ -55,7 +55,7 @@ ln -s ~/mydotfiles/ghostty/ ~/.config
 ### Wezterm (WSL)
 
 ```bash
-ln -s ~/mydotfiles/.wezterm.lua /mnt/c/Users/<USERNAME>/
+cp ~/mydotfiles/.wezterm.lua /mnt/c/Users/<USERNAME>/
 ```
 
 ## Shell
@@ -118,6 +118,17 @@ Configuración actual:
 - se inicia con theme random-theme, configurable en mydotfiles/tmux/theme/random-theme.sh
 - alias creado con tdev, con dos pestañas shell y workspace, esta última dividida en panes
 - plugins instalados indicados más abajo
+- instalar el win32yank solo para WSL (tambi´en se usara en NeoVim)
+
+#### Only WSL: clipboard hack
+
+```bash
+mkdir -p ~/.local/bin
+curl -Lo /tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/latest/download/win32yank-x64.zip
+unzip /tmp/win32yank.zip -d /tmp/win32yank
+mv /tmp/win32yank/win32yank.exe ~/.local/bin/
+chmod +x ~/.local/bin/win32yank.exe
+```
 
 ```bash
 mv ~/.tmux.conf ~/.tmux.conf.bak
@@ -216,6 +227,8 @@ brew install shfmt
 ```
 
 ### Only WSL: clipboard hack
+
+No necesario si ya se instal´o para tmux
 
 ```bash
 mkdir -p ~/.local/bin
