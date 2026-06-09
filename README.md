@@ -118,7 +118,7 @@ Configuración actual:
 - se inicia con theme random-theme, configurable en mydotfiles/tmux/theme/random-theme.sh
 - alias creado con tdev, con dos pestañas shell y workspace, esta última dividida en panes
 - plugins instalados indicados más abajo
-- instalar el win32yank solo para WSL (tambi´en se usara en NeoVim)
+- instalar el win32yank solo para WSL (también se usara en NeoVim)
 
 #### Only WSL: clipboard hack
 
@@ -207,7 +207,8 @@ Configuración actual:
 - Comentarios TODO: `todo-comments`.
 - Markdown: configuración/plugin específico en `markdown.lua`.
 - Syntax/parsing: `treesitter`.
-- Disabled plugins: `copilot`, `copilot-chat`.
+- AI plugins: `copilot`.
+- Disabled plugins: `avante`, `copilot-chat`.
 
 ### LazyVim
 
