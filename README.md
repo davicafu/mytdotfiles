@@ -170,9 +170,9 @@ ln -s ~/mydotfiles/zellij ~/.config/zellij
 
 #### Los plugins de zellij no funcionan con rutas relativas
 
+```bash
 sed -i "s/\/home\/david/\/home\/${USERNAME}/g" ./zellij/layouts/\*
-
-````
+```
 
 ### Solo en caso de tener problemas con los plugins
 
@@ -187,7 +187,7 @@ curl -L -o ~/.config/zellij/plugins/zjframes.wasm https://github.com/dj95/zjstat
 rm -rf ~/.cache/zellij
 zellij
 zellij plugin -- file:/home/david/.config/zellij/plugins/zjstatus.wasm
-````
+```
 
 ## Nvim
 
