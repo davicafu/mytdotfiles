@@ -17,7 +17,7 @@ brew upgrade
 Configuración actual:
 
 - el setup espera `Inconsolata Nerd Font` como fuente del terminal
-- habilita iconos y glyphs para `powerlevel10k`, `eza`, `lualine` y plugins de Zellij, entre otros
+- habilita iconos y glyphs para `powerlevel10k`, `eza`, `lualine` y varios custom plugins entre otros
 
 ### Mac
 
@@ -120,16 +120,6 @@ Configuración actual:
 - plugins instalados indicados más abajo
 - instalar el win32yank solo para WSL (también se usara en NeoVim)
 
-#### Only WSL: clipboard hack
-
-```bash
-mkdir -p ~/.local/bin
-curl -Lo /tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/latest/download/win32yank-x64.zip
-unzip /tmp/win32yank.zip -d /tmp/win32yank
-mv /tmp/win32yank/win32yank.exe ~/.local/bin/
-chmod +x ~/.local/bin/win32yank.exe
-```
-
 ```bash
 mv ~/.tmux.conf ~/.tmux.conf.bak
 mv ~/.config/tmux ~/.config/tmux.bak
@@ -151,6 +141,16 @@ git clone https://github.com/alexwforsythe/tmux-which-key ~/.tmux/plugins/tmux-w
 git clone --recurse-submodules https://github.com/alexwforsythe/tmux-which-key ~/.tmux/plugins/tmux-which-key
 
 tmux kill-server
+```
+
+#### Only WSL: clipboard hack
+
+```bash
+mkdir -p ~/.local/bin
+curl -Lo /tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/latest/download/win32yank-x64.zip
+unzip /tmp/win32yank.zip -d /tmp/win32yank
+mv /tmp/win32yank/win32yank.exe ~/.local/bin/
+chmod +x ~/.local/bin/win32yank.exe
 ```
 
 ### Zellij (Opcional)

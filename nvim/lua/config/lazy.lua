@@ -27,7 +27,6 @@ require("lazy").setup({
 
     -- Language support plugins
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.markdown" },
 
     -- Coding plugins
     { import = "lazyvim.plugins.extras.coding.mini-surround" },

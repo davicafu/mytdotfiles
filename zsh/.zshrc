@@ -175,6 +175,9 @@ if [[ "$OSTYPE" == linux* ]]; then
   bindkey "^[OH" beginning-of-line
   bindkey "^[OF" end-of-line
   bindkey "^[[3~" delete-char
+  # Ctrl + flecha izquierda/derecha
+  bindkey "^[[1;5D" beginning-of-line
+  bindkey "^[[1;5C" end-of-line
 fi
 
 # zsh plugins
